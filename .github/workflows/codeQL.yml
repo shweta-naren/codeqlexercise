@@ -6,13 +6,18 @@ on:
 
 jobs:
   CodeQL-Build:
+    name: Build and Analyze
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: ['javascript', 'python']
 
     permissions:
       # required for all workflows
       security-events: write
       actions: read
       contents: read
+      
 
     steps:
       - name: Checkout repository
